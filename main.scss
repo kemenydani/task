@@ -1,0 +1,183 @@
+$color-primary-bg : #3061cc;
+$color-primary-border : #003dcc;
+$color-valid-border : #1e9651;
+$color-valid-bg : #5acc79;
+$color-invalid-border : #961600;
+$color-invalid-bg : #cc6e87;
+$color-light-gray : #cccccc;
+$white : #ffffff;
+
+body, html {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: #003dcc;
+}
+* { box-sizing: border-box; }
+
+main#wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  align-content: center;
+
+  .form-holder { width: 100%; }
+}
+
+form.validatedForm {
+  background: $white;
+  border-radius: 3px;
+  border: 1px solid $color-light-gray;
+  margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 330px;
+  overflow: hidden;
+  padding: 40px 20px 40px 20px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1), 0 3px 6px rgba(0,0,0,0.1);
+
+  input, select {
+    font-size: 16px;
+    background: $white;
+    border: 0;
+  }
+
+  label { color: #8e8e8e; }
+
+  .field-group {
+    display: flex;
+    flex-direction: column;
+    &.group-horizontal {
+      flex-direction: row;
+      &.group-space-between {
+        justify-content: space-between;
+      }
+    }
+    .field { margin-right: 10px; }
+    .field:last-child { margin-right: 0; }
+  }
+  
+  .field {
+    background: $white;
+    border-radius: 2px;
+    position: relative;
+    padding: 4px;
+    border: 1px solid $color-light-gray;
+
+    input:focus, select:focus { outline: none; }
+
+    input, select {
+      font-size: 14px;
+      height: 25px;
+    }
+
+    &.field-invalid {
+      background: $color-invalid-bg;
+      border-color: $color-invalid-border;
+      input[type='text'],
+      input[type='number'],
+      select {
+        background: $color-invalid-bg;
+        &::placeholder { color: $color-invalid-border; }
+      }
+      label { color: $color-invalid-border !important; }
+    }
+
+    &.field-valid {
+      background: $color-valid-bg;
+      border-color: $color-valid-border;
+      input[type='text'],
+      input[type='number'],
+      select {
+        background: $color-valid-bg;
+        &::placeholder, label { color: $color-valid-border; }
+      }
+      label { color: $color-valid-border !important; }
+    }
+
+    .floating-label {
+      position: absolute;
+      pointer-events: none;
+      left: 4px;
+      top: 8px;
+      transition: 0.2s ease all;
+      font-size: 14px;
+    }
+
+    input:focus ~ .floating-label {
+      top: -20px;
+      font-weight: bold;
+    }
+
+/*
+    &.floating-field {
+      padding-top:0;
+      padding-bottom: 0;
+      display: flex;
+      flex-flow: column-reverse;
+      label, input {
+        //transition: all 0.2s;
+        touch-action: manipulation;
+        height: 30px;
+      }
+      input:placeholder-shown + label {
+        cursor: text;
+        max-width: 66.66%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transform-origin: left bottom;
+        transform: translate(0, 2.125rem) scale(1);
+      }
+      ::-webkit-input-placeholder {
+        opacity: 0;
+        transition: inherit;
+      }
+      input:focus::-webkit-input-placeholder {
+        opacity: 1;
+      }
+      input:not(:placeholder-shown) + label,
+      input:focus + label {
+        transform: translate(0, 0) scale(1);
+        cursor: pointer;
+      }
+    }
+*/
+
+    .autocomplete-rows {
+      position: absolute;
+      background: $white;
+      margin-left: -4px;
+      margin-top: 0;
+      z-index: 10;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.4), 0 3px 6px rgba(0,0,0,0.4);
+      max-height: 200px;
+      overflow-y: scroll;
+      > div {
+        height: 25px;
+        line-height: 25px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-bottom: 1px solid $color-light-gray;
+      }
+    }
+  }
+
+  .form-row {
+    padding-bottom: 40px;
+    > label {
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+  }
+
+  button {
+    background: $color-primary-bg;
+    border: 1px solid $color-primary-border;
+    border-radius: 2px;
+    color: $white;
+    padding: 5px 15px 5px 15px;
+  }
+
+}

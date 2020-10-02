@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Check24 Task</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+<main id="wrapper">
+    <div class="form-holder">
+        <form id="application" class="validatedForm" method="POST" autocomplete="off">
+
+            <div class="form-row">
+                <div class="field floating-field">
+                    <span class="block">
+                        <input type="text" name="firstname" id="firstname" class="input-field">
+                        <label class="floating-label" for="firstname">Firstname</label>
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="field floating-field">
+                    <span class="block">
+                    <input type="text" name="lastname" id="lastname" class="input-field">
+                    <label class="floating-label" for="lastname">Lastname</label>
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="field-group group-horizontal group-space-between">
+                    <div class="field">
+                        <input type="text" name="street" id="street" placeholder="street" class="input-field">
+                    </div>
+                    <div class="field">
+                        <input type="text" name="street_nr" id="street_nr" placeholder="nr." style="max-width: 80px" class="input-field">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="field-group group-horizontal group-space-between">
+                    <div class="field">
+                        <input type="number" name="zip" id="zip" placeholder="zip" style="max-width: 80px" class="input-field autocomplete-field">
+                        <div class="autocomplete-rows"></div>
+                    </div>
+                    <div class="field">
+                        <input type="text" name="city" id="city" placeholder="city" class="input-field">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="field-group group-horizontal group-space-between">
+                    <div class="field">
+                        <select name="phone_nr_prefix" id="phone_nr_prefix" style="width: 80px" class="input-field">
+                            <option value="0151" selected>0151</option>
+                            <option value="0156">0156</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <input type="text" name="phone_nr" id="phone_nr" placeholder="cellphone number" class="input-field">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <label>I know:</label>
+                <br>
+                <div class="field-group group-horizontal group-space-between">
+                    <div class="labeled-check">
+                        <input type="checkbox" name="know_html" id="know_html" class="input-field">
+                        <span>HTML</span>
+                    </div>
+                    <div class="labeled-check">
+                        <input type="checkbox" name="know_jquery" id="know_jquery" class="input-field">
+                        <span>jQuery</span>
+                    </div>
+                    <div class="labeled-check">
+                        <input type="checkbox" name="know_css" id="know_css" class="input-field">
+                        <span>CSS</span>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit">Submit</button>
+
+        </form>
+    </div>
+</main>
+
+<!-- scripts -->
+<script type="text/javascript" src="lib/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+
+<script type="text/javascript">
+
+var config = {
+    rules: {
+        firstname : 'min:3|validate_letters',
+        lastname : 'min:3|validate_letters',
+        street: 'min:3|validate_street',
+        city : 'min:3|validate_letters',
+        street_nr: 'validate_street_nr',
+        phone_nr : 'min:8|max:8'
+    },
+    autocomplete: {
+        zip : [12578,96587,23568,99999,45678]
+    }
+};
+
+var fm = new FormManager($("form"), config);
+
+fm.validator.validate_letters = function(field, value){
+    return /^[a-zA-Z\S]+$/.test(value);
+};
+
+fm.validator.validate_street = function(field, value){
+    return /^[a-zA-Z\s]+$/.test(value);
+};
+
+fm.validator.validate_street_nr = function(field, value){
+    return /^(\d+[A-F]?)$/.test(value);
+};
+
+</script>
+
+</body>
+</html>

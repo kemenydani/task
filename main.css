@@ -1,0 +1,157 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: #003dcc; }
+
+* {
+  box-sizing: border-box; }
+
+main#wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  align-content: center; }
+  main#wrapper .form-holder {
+    width: 100%; }
+
+form.validatedForm {
+  background: #ffffff;
+  border-radius: 3px;
+  border: 1px solid #cccccc;
+  margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 330px;
+  overflow: hidden;
+  padding: 40px 20px 40px 20px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1); }
+  form.validatedForm input, form.validatedForm select {
+    font-size: 16px;
+    background: #ffffff;
+    border: 0; }
+  form.validatedForm label {
+    color: #8e8e8e; }
+  form.validatedForm .field-group {
+    display: flex;
+    flex-direction: column; }
+    form.validatedForm .field-group.group-horizontal {
+      flex-direction: row; }
+      form.validatedForm .field-group.group-horizontal.group-space-between {
+        justify-content: space-between; }
+    form.validatedForm .field-group .field {
+      margin-right: 10px; }
+    form.validatedForm .field-group .field:last-child {
+      margin-right: 0; }
+  form.validatedForm .field {
+    background: #ffffff;
+    border-radius: 2px;
+    position: relative;
+    padding: 4px;
+    border: 1px solid #cccccc;
+    /*
+        &.floating-field {
+          padding-top:0;
+          padding-bottom: 0;
+          display: flex;
+          flex-flow: column-reverse;
+          label, input {
+            //transition: all 0.2s;
+            touch-action: manipulation;
+            height: 30px;
+          }
+          input:placeholder-shown + label {
+            cursor: text;
+            max-width: 66.66%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            transform-origin: left bottom;
+            transform: translate(0, 2.125rem) scale(1);
+          }
+          ::-webkit-input-placeholder {
+            opacity: 0;
+            transition: inherit;
+          }
+          input:focus::-webkit-input-placeholder {
+            opacity: 1;
+          }
+          input:not(:placeholder-shown) + label,
+          input:focus + label {
+            transform: translate(0, 0) scale(1);
+            cursor: pointer;
+          }
+        }
+    */ }
+    form.validatedForm .field input:focus, form.validatedForm .field select:focus {
+      outline: none; }
+    form.validatedForm .field input, form.validatedForm .field select {
+      font-size: 14px;
+      height: 25px; }
+    form.validatedForm .field.field-invalid {
+      background: #cc6e87;
+      border-color: #961600; }
+      form.validatedForm .field.field-invalid input[type='text'],
+      form.validatedForm .field.field-invalid input[type='number'],
+      form.validatedForm .field.field-invalid select {
+        background: #cc6e87; }
+        form.validatedForm .field.field-invalid input[type='text']::placeholder,
+        form.validatedForm .field.field-invalid input[type='number']::placeholder,
+        form.validatedForm .field.field-invalid select::placeholder {
+          color: #961600; }
+      form.validatedForm .field.field-invalid label {
+        color: #961600 !important; }
+    form.validatedForm .field.field-valid {
+      background: #5acc79;
+      border-color: #1e9651; }
+      form.validatedForm .field.field-valid input[type='text'],
+      form.validatedForm .field.field-valid input[type='number'],
+      form.validatedForm .field.field-valid select {
+        background: #5acc79; }
+        form.validatedForm .field.field-valid input[type='text']::placeholder, form.validatedForm .field.field-valid input[type='text'] label,
+        form.validatedForm .field.field-valid input[type='number']::placeholder,
+        form.validatedForm .field.field-valid input[type='number'] label,
+        form.validatedForm .field.field-valid select::placeholder,
+        form.validatedForm .field.field-valid select label {
+          color: #1e9651; }
+      form.validatedForm .field.field-valid label {
+        color: #1e9651 !important; }
+    form.validatedForm .field .floating-label {
+      position: absolute;
+      pointer-events: none;
+      left: 4px;
+      top: 8px;
+      transition: 0.2s ease all;
+      font-size: 14px; }
+    form.validatedForm .field input:focus ~ .floating-label {
+      top: -20px;
+      font-weight: bold; }
+    form.validatedForm .field .autocomplete-rows {
+      position: absolute;
+      background: #ffffff;
+      margin-left: -4px;
+      margin-top: 0;
+      z-index: 10;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4), 0 3px 6px rgba(0, 0, 0, 0.4);
+      max-height: 200px;
+      overflow-y: scroll; }
+      form.validatedForm .field .autocomplete-rows > div {
+        height: 25px;
+        line-height: 25px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-bottom: 1px solid #cccccc; }
+  form.validatedForm .form-row {
+    padding-bottom: 40px; }
+    form.validatedForm .form-row > label {
+      display: inline-block;
+      padding-bottom: 10px; }
+  form.validatedForm button {
+    background: #3061cc;
+    border: 1px solid #003dcc;
+    border-radius: 2px;
+    color: #ffffff;
+    padding: 5px 15px 5px 15px; }
+
+/*# sourceMappingURL=main.css.map */
